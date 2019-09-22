@@ -49,17 +49,18 @@ int main() {
                     location = rand() % (int(input.size()) + 1);
                     type = rand() % 20;
                     printf("==============================================================\n");
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     printf("ATTEMPTING TO INSERT STRING \"%s\" AT POSITION %d:\n", arr[size_t(type)].c_str(), location);
                     printf("ORIGINAL STRING: %s\n", input.c_str());
                     input.insert(size_t(location), arr[size_t(type)]);
                     printf("MODIFIED STRING: %s\n", input.c_str());
                     printf("==============================================================\n");
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     location = rand() % (int(input.size()) + 1);
                     printf("ATTEMPTING TO ERASE STRING OF LENGTH %zu AT POSITION %d:\n", arr[size_t(type)].size(), location);
                     printf("ORIGINAL STRING: %s\n", input.c_str());
                     input.erase(size_t(location), arr[size_t(type)].size());
                     printf("MODIFIED STRING: %s\n", input.c_str());
-                    operations_completed += 2;
                 }
                 ++words_processed;
             }
@@ -81,16 +82,17 @@ int main() {
                     location = rand() % (int(input.size()) + 1);
                     type = rand() % 20;
                     printf("==============================================================\n");
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     printf("ATTEMPTING TO FIND_FIRST_OF WITH STRING \"%s\"\n  ON STRING \"%s\"\n  AT POSITION %d:\n", arr[size_t(type)].c_str(), input.c_str(), location);
                     size_t res = input.find_first_of(arr[size_t(type)], size_t(location));
                     printf("INDEX RETURNED BY FIND_FIRST_OF: %zu\n", res);
                     printf("==============================================================\n");
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     location = rand() % (int(input.size()) + 1);
                     type = rand() % 20;
                     printf("ATTEMPTING TO FIND_LAST_OF WITH STRING \"%s\"\n  ON STRING \"%s\"\n  AT POSITION %d:\n", arr[size_t(type)].c_str(), input.c_str(), location);
                     res = input.find_last_of(arr[size_t(type)], size_t(location));
                     printf("INDEX RETURNED BY FIND_LAST_OF: %zu\n", res);
-                    operations_completed += 2;
                 }
                 ++words_processed;
             }
@@ -115,11 +117,11 @@ int main() {
                     type = rand() % 20;
                     len = rand() % (int(input.size()));
                     printf("==============================================================\n");
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     printf("ATTEMPTING TO REPLACE %d CHARS WITH \"%s\" AT INDEX %d:\n", len, arr[size_t(type)].c_str(), location);
                     printf("ORIGINAL STRING: %s\n", input.c_str());
                     input.replace(size_t(location), len, arr[size_t(type)]);
                     printf("MODIFIED STRING: %s\n", input.c_str());
-                    ++operations_completed;
                 }
                 ++words_processed;
             }
@@ -145,12 +147,14 @@ int main() {
                     location = rand() % (int(input.size()) + 1);
                     type = rand() % 70;
                     printf("==============================================================\n");
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     printf("ATTEMPTING TO INSERT STRING \"%s\" AT POSITION %d:\n", arr[size_t(type)].c_str(), location);
                     printf("ORIGINAL STRING: %s\n", input.c_str());
                     input.insert(size_t(location), arr[size_t(type)]);
                     printf("MODIFIED STRING: %s\n", input.c_str());
                     printf("STRING SIZE: %zu\n", input.size());
                     printf("==============================================================\n");
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     location = rand() % (int(input.size()) + 1);
                     type = rand() % 70;
                     printf("ATTEMPTING TO ERASE STRING OF LENGTH %zu AT POSITION %d:\n", arr[size_t(type)].size(), location);
@@ -160,6 +164,7 @@ int main() {
                     printf("STRING SIZE: %zu\n", input.size());
                     printf("==============================================================\n");
                     if (input.size()) {
+                        printf("OPERATION NUMBER: %d\n", ++operations_completed);
                         location = rand() % (int(input.size()) + 1);
                         type = rand() % 70;
                         len = rand() % (int(input.size()));
@@ -169,14 +174,13 @@ int main() {
                         printf("MODIFIED STRING: %s\n", input.c_str());
                         printf("STRING SIZE: %zu\n", input.size());
                         printf("==============================================================\n");
-                        ++operations_completed;
                     }
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     location = rand() % (int(input.size()) + 1);
                     type = rand() % 70;
                     printf("ATTEMPTING TO FIND_FIRST_OF WITH STRING \"%s\"\n  ON STRING \"%s\"\n  AT POSITION %d:\n", arr[size_t(type)].c_str(), input.c_str(), location);
                     size_t res = input.find_first_of(arr[size_t(type)], size_t(location));
                     printf("INDEX RETURNED BY FIND_FIRST_OF: %zu\n", res);
-                    operations_completed += 3;
                 }
                 ++words_processed;
             }
@@ -202,18 +206,21 @@ int main() {
                     location = rand() % (int(input.size()) + 1);
                     type = rand() % 70;
                     printf("==============================================================\n");
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     printf("ATTEMPTING TO INSERT STRING \"%s\" AT POSITION %d:\n", arr[size_t(type)].c_str(), location);
                     printf("ORIGINAL STRING: %s\n", input.c_str());
                     input.insert(size_t(location), arr[size_t(type)]);
                     printf("MODIFIED STRING: %s\n", input.c_str());
                     printf("STRING SIZE: %zu\n", input.size());
                     printf("==============================================================\n");
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     location = rand() % (int(input.size()) + 1);
                     type = rand() % 20;
                     printf("ATTEMPTING TO FIND_LAST_OF WITH STRING \"%s\"\n  ON STRING \"%s\"\n  AT POSITION %d:\n", arr[size_t(type)].c_str(), input.c_str(), location);
                     size_t res = input.find_last_of(arr[size_t(type)], size_t(location));
                     printf("INDEX RETURNED BY FIND_LAST_OF: %zu\n", res);
                     printf("==============================================================\n");
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     location = rand() % (int(input.size()) + 1);
                     type = rand() % 70;
                     printf("ATTEMPTING TO ERASE STRING OF LENGTH %zu AT POSITION %d:\n", arr[size_t(type)].size(), location);
@@ -222,6 +229,7 @@ int main() {
                     printf("MODIFIED STRING: %s\n", input.c_str());
                     printf("STRING SIZE: %zu\n", input.size());
                     printf("==============================================================\n");
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     location = rand() % (int(input.size()) + 1);
                     type = rand() % 20;
                     printf("ATTEMPTING TO FIND_LAST_OF WITH STRING \"%s\"\n  ON STRING \"%s\"\n  AT POSITION %d:\n", arr[size_t(type)].c_str(), input.c_str(), location);
@@ -229,6 +237,7 @@ int main() {
                     printf("INDEX RETURNED BY FIND_LAST_OF: %zu\n", res);
                     printf("==============================================================\n");
                     if (input.size()) {
+                        printf("OPERATION NUMBER: %d\n", ++operations_completed);
                         location = rand() % (int(input.size()) + 1);
                         type = rand() % 70;
                         len = rand() % (int(input.size()));
@@ -238,14 +247,13 @@ int main() {
                         printf("MODIFIED STRING: %s\n", input.c_str());
                         printf("STRING SIZE: %zu\n", input.size());
                         printf("==============================================================\n");
-                        ++operations_completed;
                     }
+                    printf("OPERATION NUMBER: %d\n", ++operations_completed);
                     location = rand() % (int(input.size()) + 1);
                     type = rand() % 70;
                     printf("ATTEMPTING TO FIND_FIRST_OF WITH STRING \"%s\"\n  ON STRING \"%s\"\n  AT POSITION %d:\n", arr[size_t(type)].c_str(), input.c_str(), location);
                     res = input.find_first_of(arr[size_t(type)], size_t(location));
                     printf("INDEX RETURNED BY FIND_FIRST_OF: %zu\n", res);
-                    operations_completed += 5;
                 }
                 ++words_processed;
             }
