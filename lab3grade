@@ -15,43 +15,13 @@ rm -f out-1.txt out-2.txt out-3.txt out-4.txt out-5.txt
 rm -f out-erase.txt out-insert.txt out-replace.txt out-ffo.txt out-flo.txt
 rm -f result.txt
 
-# Generate output for individual functions
-make erase
-./strlib > out-erase.txt
-make insert
-./strlib > out-insert.txt
-make replace
-./strlib > out-replace.txt
-make find_first_of
-./strlib > out-ffo.txt
-make find_last_of
-./strlib > out-flo.txt
-
-# Generate outputs for samples
-make news
-./strlib < sample-1.txt > out-1.txt
-./strlib < sample-2.txt > out-2.txt
-./strlib < sample-3.txt > out-3.txt
-./strlib < sample-4.txt > out-4.txt
-./strlib < sample-5.txt > out-5.txt
-
-# Check differences and send to error file
-echo $(sdiff -l out-erase.txt sol-erase.txt | cat -n | grep -v -e '($' > error-erase.txt)
-echo $(sdiff -l out-insert.txt sol-insert.txt | cat -n | grep -v -e '($' > error-insert.txt)
-echo $(sdiff -l out-replace.txt sol-replace.txt | cat -n | grep -v -e '($' > error-replace.txt)
-echo $(sdiff -l out-ffo.txt sol-ffo.txt | cat -n | grep -v -e '($' > error-ffo.txt)
-echo $(sdiff -l out-flo.txt sol-flo.txt | cat -n | grep -v -e '($' > error-flo.txt)
-echo $(sdiff -l out-1.txt sol-1.txt | cat -n | grep -v -e '($' > error-1.txt)
-echo $(sdiff -l out-2.txt sol-2.txt | cat -n | grep -v -e '($' > error-2.txt)
-echo $(sdiff -l out-3.txt sol-3.txt | cat -n | grep -v -e '($' > error-3.txt)
-echo $(sdiff -l out-4.txt sol-4.txt | cat -n | grep -v -e '($' > error-4.txt)
-echo $(sdiff -l out-5.txt sol-5.txt | cat -n | grep -v -e '($' > error-5.txt)
-
-# Send results to file
+# Generate outputs for individual functions
 touch result.txt
 echo -e "Grading Lab 3 String Library...\n" >> result.txt
 
-# Check pass/fail and send result
+make erase
+./strlib > out-erase.txt
+echo $(sdiff -l out-erase.txt sol-erase.txt | cat -n | grep -v -e '($' > error-erase.txt)
 if [ -s error-erase.txt ]; then
     echo -e "Test case 'erase' failed ... see error-erase.txt for line numbers of failure\n" >> result.txt;
 else
@@ -59,6 +29,9 @@ else
     rm -f out-erase.txt error-erase.txt
 fi
 
+make insert
+./strlib > out-insert.txt
+echo $(sdiff -l out-insert.txt sol-insert.txt | cat -n | grep -v -e '($' > error-insert.txt)
 if [ -s error-insert.txt ]; then
     echo -e "Test case 'insert' failed ... see error-insert.txt for line numbers of failure\n" >> result.txt;
 else
@@ -66,6 +39,9 @@ else
     rm -f out-insert.txt error-insert.txt
 fi
 
+make replace
+./strlib > out-replace.txt
+echo $(sdiff -l out-replace.txt sol-replace.txt | cat -n | grep -v -e '($' > error-replace.txt)
 if [ -s error-replace.txt ]; then
     echo -e "Test case 'replace' failed ... see error-replace.txt for line numbers of failure\n" >> result.txt;
 else
@@ -73,6 +49,9 @@ else
     rm -f out-replace.txt error-replace.txt
 fi
 
+make find_first_of
+./strlib > out-ffo.txt
+echo $(sdiff -l out-ffo.txt sol-ffo.txt | cat -n | grep -v -e '($' > error-ffo.txt)
 if [ -s error-ffo.txt ]; then
     echo -e "Test case 'find_first_of' failed ... see error-ffo.txt for line numbers of failure\n" >> result.txt;
 else
@@ -80,6 +59,9 @@ else
     rm -f out-ffo.txt error-ffo.txt
 fi
 
+make find_last_of
+./strlib > out-flo.txt
+echo $(sdiff -l out-flo.txt sol-flo.txt | cat -n | grep -v -e '($' > error-flo.txt)
 if [ -s error-flo.txt ]; then
     echo -e "Test case 'find_last_of' failed ... see error-flo.txt for line numbers of failure\n" >> result.txt;
 else
@@ -87,6 +69,10 @@ else
     rm -f out-flo.txt error-flo.txt
 fi
 
+# Generate outputs for samples
+make news
+./strlib < sample-1.txt > out-1.txt
+echo $(sdiff -l out-1.txt sol-1.txt | cat -n | grep -v -e '($' > error-1.txt)
 if [ -s error-1.txt ]; then
     echo -e "Test case 'txt1_EI' failed ... see error-1.txt for line numbers of failure\n" >> result.txt;
 else
@@ -94,6 +80,8 @@ else
     rm -f out-1.txt error-1.txt
 fi
 
+./strlib < sample-2.txt > out-2.txt
+echo $(sdiff -l out-2.txt sol-2.txt | cat -n | grep -v -e '($' > error-2.txt)
 if [ -s error-2.txt ]; then
     echo -e "Test case 'txt2_FL' failed ... see error-2.txt for line numbers of failure\n" >> result.txt;
 else
@@ -101,6 +89,8 @@ else
     rm -f out-2.txt error-2.txt
 fi
 
+./strlib < sample-3.txt > out-3.txt
+echo $(sdiff -l out-3.txt sol-3.txt | cat -n | grep -v -e '($' > error-3.txt)
 if [ -s error-3.txt ]; then
     echo -e "Test case 'txt3_R' failed ... see error-3.txt for line numbers of failure\n" >> result.txt;
 else
@@ -108,6 +98,8 @@ else
     rm -f out-3.txt error-3.txt
 fi
 
+./strlib < sample-4.txt > out-4.txt
+echo $(sdiff -l out-4.txt sol-4.txt | cat -n | grep -v -e '($' > error-4.txt)
 if [ -s error-4.txt ]; then
     echo -e "Test case 'txt4_EIRF' failed ... see error-4.txt for line numbers of failure\n" >> result.txt;
 else
@@ -115,6 +107,8 @@ else
     rm -f out-4.txt error-4.txt
 fi
 
+./strlib < sample-5.txt > out-5.txt
+echo $(sdiff -l out-5.txt sol-5.txt | cat -n | grep -v -e '($' > error-5.txt)
 if [ -s error-5.txt ]; then
     echo -e "Test case 'txt5_EIRFL' failed ... see error-5.txt for line numbers of failure\n" >> result.txt;
 else
