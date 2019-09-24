@@ -61,8 +61,8 @@ int main() {
             pp.erase(12, 4);
             if (pp != "potato parro") {
                 printf("FAILED\n");
-                printf(" ORIGINAL STRING: root/shared/user/config\n");
-                printf(" EXPECTED STRING: root/shared/config\n");
+                printf(" ORIGINAL STRING: potato parrot\n");
+                printf(" EXPECTED STRING: potato parro\n");
                 printf(" STUDENT STRING:  %s\n", pp.c_str());
             }
             else if (pp.size() != 12) {
