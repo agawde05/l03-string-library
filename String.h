@@ -399,6 +399,8 @@ String& String::erase(size_t pos, size_t len) {
 String& String::insert(size_t pos, const String& str) {
     // ERROR CHECKING: YOU DO NOT NEED TO WORRY ABOUT THIS FOR THIS LAB
     if (pos > sz) throw String_exception("Insertion point out of range");
+    // Make sure there is enough space to store the new string - don't worry about this.
+    check_allocation(int(sz + str.sz + 1));
     // TODO: Implement insert() below.
 
     return *this; 
