@@ -415,7 +415,7 @@ String& String::insert(size_t pos, const String& str) {
 // portion of the String that begins at character "pos" and spans "len" characters with the contents of
 // another String object, "str".
 //
-// You may assume that the starting position "pos" will be valid, and "len" will be greater than 0.
+// You may assume that the starting position "pos" will be valid, and "len" will be >= 0.
 // If the value of "len" exceeds the end of the String object, replace as many characters as possible.
 // A value of String::npos indicates that all characters to the end of the String should be replaced.
 //
