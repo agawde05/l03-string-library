@@ -368,7 +368,7 @@ void String::clear() {
 // whichever comes first). If "len" is not defined, the String is erased from "pos" to the end of the String.
 // A reference to the modified String object is returned.
 //
-// You may assume that the starting position "pos" will be valid, and "len" will be greater than 0.
+// You may assume that the starting position "pos" will be valid, and "len" will be >= 0.
 //
 // HINTS: Start with two pointers or indices, one that begins at the position to begin erasing, and one that 
 // begins at the character "len" distance away from "pos" (the first character after "pos" that won't be erased). 
