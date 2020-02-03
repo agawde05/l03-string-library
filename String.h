@@ -413,7 +413,7 @@ String& String::insert(size_t pos, const String& str) {
 // TODO #3: Implement replace() for String Objects
 // When replace() is called using three parameters, "pos", "len", and "str", this function replaces the
 // portion of the String that begins at character "pos" and spans "len" characters with the contents of
-// another String object, "str".
+// the String object "str".
 //
 // You may assume that the starting position "pos" will be valid, and "len" will be >= 0.
 // If the value of "len" exceeds the end of the String object, replace as many characters as possible.
