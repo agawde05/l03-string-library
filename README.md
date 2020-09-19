@@ -9,7 +9,7 @@ This assignment supplements the "Arrays and Containers" lecture of the course. I
 
 In lab and lecture, you learned about C++ strings and the C++ string library. The string class provides many helpful member functions that simplify the usage of string objects (such as find, insert, erase, just to name a few!). While you do not have to fully understand how a string object works under the hood, knowing these string operations will be helpful for future projects and interviews. In this lab assignment, you will implement five of these operations within a String class that we have provided for you.
 
-Please download the String.h starter file from Canvas. Please complete the lab assignment in this file. Do not include any libraries beyond the ones given to you or modify the file outside the portions labeled with a TODO. Doing so may cause your program to fail on the autograder. Your program will be graded on 71 test cases, with 11 testing erase, 11 testing insert, 20 testing replace, 14 testing find_first_of, and 15 testing find_last_of. The test cases provided to you here are the same as the test cases on the autograder.
+Please complete the lab assignment in the String.cpp file. Do not include any libraries beyond the ones given to you or modify the file outside the portions labeled with a TODO. Doing so may cause your program to fail on the autograder. Your program will be graded on 71 test cases, with 11 testing erase(), 11 testing insert(), 20 testing replace(), 14 testing find_first_of(), and 15 testing find_last_of(). The test cases provided to you here are the same as the test cases on the autograder.
 
 It is recommended that you review the "Arrays and Containers" lecture before starting this assignment.
 
@@ -108,7 +108,7 @@ WARNING: unlike find() and find_first_of(), which both default to zero, it is po
 
 You may work with a partner on this lab. To submit to the autograder, create a .tar.gz file containing just String.h, as shown below. Do not modify the String.h file name, or your submission won't run! Make sure the capitalization of your command matches.
 ```
-tar -czvf lab3.tar.gz String.h
+tar -czvf lab3.tar.gz String.cpp
 ```
 If you are working with a partner, both partners must submit to the autograder. Only students who submit code to the autograder will receive points. It's perfectly fine for both partners to submit identical code, as long as the code was written by both of the partners. You will be able to make five submissions to the autograder per day, up until the due date. Make sure the assignment identifier is on all code files you submit.
 
