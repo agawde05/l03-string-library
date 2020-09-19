@@ -111,3 +111,8 @@ You may work with a partner on this lab. To submit to the autograder, create a .
 tar -czvf lab3.tar.gz String.h
 ```
 If you are working with a partner, both partners must submit to the autograder. Only students who submit code to the autograder will receive points. It's perfectly fine for both partners to submit identical code, as long as the code was written by both of the partners. You will be able to make five submissions to the autograder per day, up until the due date. Make sure the assignment identifier is on all code files you submit.
+
+UPDATE: From Fall 2020 onwards, you may use the provided Makefile to generate a tarball using
+```
+make fullsubmit
+```
