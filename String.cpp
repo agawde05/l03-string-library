@@ -391,7 +391,7 @@ void String::grow_allocation(int amount) {
 // Allocates a C-string, constructed on the range from begin to end of C-string str.
 char* String::allocate_string(const char* str, size_t begin, size_t len) const {
     char* alloc_str = new char[len + 1];
-    strncpy(alloc_str, str + begin, len);
+    memcpy(alloc_str, str + begin, len);
     alloc_str[len] = a_null_byte;
     return alloc_str;
 }
