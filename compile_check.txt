@@ -4,6 +4,9 @@
 #include <cstring>
 #include <stdio.h> /* printf */
 
+size_t npos = std::numeric_limits<size_t>::max();
+char a_null_byte = '\0';
+
 int main() {
     // THIS FILE IS NOT COMPREHENSIVE - YOU SHOULD WRITE YOUR OWN TESTS
     String myString = "hello world";
