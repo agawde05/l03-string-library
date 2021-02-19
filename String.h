@@ -160,7 +160,7 @@ private:
     char* allocate_string(const char* str, size_t begin, size_t len) const;
 
     char* cstr;                      // pointer to internal C-string
-    size_t sz;                       // size of interal C-string
+    size_t sz;                       // size of internal C-string
     int allocation;                  // amount of memory allocated to C-string
 };
 
