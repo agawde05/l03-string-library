@@ -820,6 +820,7 @@ int main() {
             }
             // clean up memory
             delete[] target;
+            (void)counter;
         }
         // Test Find First Of 2
         if (test_number == 44 || test_number == TEST_ALL || test_number == TEST_FFO) {
@@ -1102,6 +1103,7 @@ int main() {
             }
             // clean up memory
             delete[] target;
+            (void)counter;
         }
         // Test Find Last Of 2
         if (test_number == 58 || test_number == TEST_ALL || test_number == TEST_FLO) {
