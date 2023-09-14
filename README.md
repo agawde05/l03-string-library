@@ -135,6 +135,8 @@ $ tar -czvf lab3.tar.gz String.cpp
 
 If you are working with a partner, both partners must submit separately to the autograder. Only students who submit code to the autograder will receive points. It's perfectly fine for both partners to submit identical code, as long as the code was written by both of the partners. You will be able to make five submissions to the autograder per day, up until the due date. Make sure the project identifier is included in `String.cpp`.
 
+You may use the provided Makefile to generate a tarball:
+
 ``` console
 $ make fullsubmit
 ```
