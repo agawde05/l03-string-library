@@ -41,11 +41,10 @@
 # Vertion 0 - ????-??-??, Matt Diffenderfer (mjdiffy@umich.edu)
 
 # enables c++17 on CAEN
-PATH := /usr/um/gcc-7.1.0/bin:$(PATH)
-LD_LIBRARY_PATH := /usr/um/gcc-7.1.0/lib64
-LD_RUN_PATH := /usr/um/gcc-7.1.0/lib64
+PATH := /usr/um/gcc-11.3.0/bin:$(PATH)
+LD_LIBRARY_PATH := /usr/um/gcc-11.3.0/lib64
+LD_RUN_PATH := /usr/um/gcc-11.3.0/lib64
 
-# TODO
 # Change EXECUTABLE to match the command name given in the project spec.
 EXECUTABLE 	= strlib
 
@@ -63,10 +62,8 @@ SOURCES     := $(filter-out $(TESTSOURCES), $(SOURCES))
 # list of objects used in project
 OBJECTS		= $(SOURCES:%.cpp=%.o)
 
-# TODO
 # If main() is in a file named project*.cpp, use the following line
 # PROJECTFILE = $(wildcard project*.cpp)
-# TODO
 # If main() is in another file delete the line above, edit and uncomment below
 PROJECTFILE = StringVerifier.cpp
 
@@ -190,7 +187,6 @@ help:
 	@echo "$$MAKEFILE_HELP"
 
 #######################
-# TODO (begin) #
 #######################
 # individual dependencies for objects
 # Examples:
@@ -210,8 +206,9 @@ help:
 
 # project0.o: project0.cpp class.h
 
+String.o: String.cpp String.h
+
 ######################
-# TODO (end) #
 ######################
 
 # these targets do not create any files
