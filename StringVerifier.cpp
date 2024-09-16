@@ -2,6 +2,7 @@
 #include <cstring>
 #include <cstdio>
 #include <cstdlib>
+#include <exception>
 
 /* 
 *
@@ -799,12 +800,10 @@ int main() {
             String act = "the quick brown fox jumps over the lazy dog";
             size_t solution[26] = { 36, 10, 7, 40, 2, 16, 42, 1, 6, 20, 8, 35, 22, 14, 12, 23, 4, 11, 24, 0, 5, 27, 13, 18, 38, 37 };
             bool passed = true;
-            int counter = 0;
             char* target = new char[2];
             target[1] = '\0';
             for (int i = 0; i < 26; ++i) {
                 target[0] = static_cast<char>('a' + i);
-                ++counter;
                 String next_char = target;
                 size_t res = act.find_first_of(next_char);
                 if (res != solution[i]) {
@@ -820,7 +819,6 @@ int main() {
             }
             // clean up memory
             delete[] target;
-            (void)counter;
         }
         // Test Find First Of 2
         if (test_number == 44 || test_number == TEST_ALL || test_number == TEST_FFO) {
@@ -1082,12 +1080,10 @@ int main() {
             String str = "the quick brown fox jumps over the lazy dog";
             size_t solution[26] = { 36, 10, 7, 40, 33, 16, 42, 32, 6, 20, 8, 35, 22, 14, 41, 23, 4, 29, 24, 31, 21, 27, 13, 18, 38, 37 };
             bool passed = true;
-            int counter = 0;
             char* target = new char[2];
             target[1] = '\0';
             for (int i = 0; i < 26; ++i) {
                 target[0] = static_cast<char>('a' + i);
-                ++counter;
                 String next_char = target;
                 size_t res = str.find_last_of(next_char);
                 if (res != solution[i]) {
@@ -1103,7 +1099,6 @@ int main() {
             }
             // clean up memory
             delete[] target;
-            (void)counter;
         }
         // Test Find Last Of 2
         if (test_number == 58 || test_number == TEST_ALL || test_number == TEST_FLO) {

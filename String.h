@@ -2,8 +2,17 @@
 #define STRING_H
 
 #include <cstring> /* strlen, strncmp */
-#include <algorithm> /* std::max, std::min, std::swap */
+#include <utility> /* std::swap */
+#include <limits>  /* std::numeric_limits */
 // DO NOT #INCLUDE ANY OTHER LIBRARIES - YOU WILL LOSE POINTS
+
+// A simple implementation of min() so that <algorithm> is not needed.
+namespace std {
+    template <typename T>
+    const T& min(const T &a, const T &b) {
+    	return (a < b) ? a : b;
+    } // min()
+}
 
 // Project Identifer: 5AE7C079A8BF493DDDB6EF76D42136D183D8D7A8
 

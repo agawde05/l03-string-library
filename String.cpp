@@ -166,23 +166,22 @@ String String::substr(size_t pos, size_t len) const {
     // If the position exceeds the string's size, throw an out of bounds exception.
     if (pos > sz) {
         throw String_exception("Substring bounds invalid");
-    }  // if ..pos
+    }
     // Allocate a string that starts at position pos and spans len characters.
     char* newCstr = allocate_string(cstr, pos, std::min(len, sz - pos));
     // Use the String constuctor to build a String object from the newCstr.
     String temp(newCstr);
     // Delete the newCstr (since allocate_string uses dynamic memory).
     delete[] newCstr;
-
     // Return the String object that was created.
     return temp;
-}  // substr()
+}
 
 // The clear() function clears the contents of a String object.
 void String::clear() {
     String s;
     swap(s);
-}  // clear()
+}
 
 // ============================================== TODO #1 ============================================== //
 
@@ -200,14 +199,17 @@ void String::clear() {
 // variable "a_null_byte" (e.g. *ptr = a_null_byte). Don't forget to update the size of the string, "sz".
 String& String::erase(size_t pos, size_t len) {
     // ERROR CHECKING: YOU DO NOT NEED TO WORRY ABOUT THIS FOR THIS LAB
-    if (pos > sz)
-        throw String_exception("Erase bounds invalid");
+    if (pos > sz) { 
+        throw String_exception("Erase bounds invalid"); 
+    }
+
+    // TODO: Delete the following line, just here so it compiles after being downloaded
+    (void) len;
 
     // TODO: Implement erase() below.
-    /* Delete this */ (void)len;
 
     return *this;
-}  // erase()
+}
 
 // ============================================ END TODO #1 ============================================ //
 
@@ -225,16 +227,13 @@ String& String::erase(size_t pos, size_t len) {
 // freed up for insertion. Make sure you add '\0' to the end of the string after inserting, and "sz" is updated.
 String& String::insert(size_t pos, const String& str) {
     // ERROR CHECKING: YOU DO NOT NEED TO WORRY ABOUT THIS FOR THIS LAB
-    if (pos > sz)
-        throw String_exception("Insertion point out of range");
-
+    if (pos > sz) throw String_exception("Insertion point out of range");
     // Make sure there is enough space to store the new string - don't worry about this.
     check_allocation(int(sz + str.sz + 1));
-
     // TODO: Implement insert() below.
 
     return *this;
-}  // insert()
+}
 
 // ============================================ END TODO #2 ============================================ //
 
@@ -252,19 +251,14 @@ String& String::insert(size_t pos, const String& str) {
 // HINT: You may make use other functions in this library to write a short solution.
 String& String::replace(size_t pos, size_t len, const String& str) {
     // ERROR CHECKING: YOU DO NOT NEED TO WORRY ABOUT THIS FOR THIS LAB
-    if (pos > sz)
-        throw String_exception("Replace bounds invalid");
-
+    if (pos > sz) throw String_exception("Replace bounds invalid");
     // Make sure there is enough space to store the new string - don't worry about this.
-    if ((pos + len) > sz)
-        len = sz - pos;
-    if (len < str.sz)
-        check_allocation(int(sz - len + str.sz + 1));
-
+    if ((pos + len) > sz) len = sz - pos;
+    if (len < str.sz) check_allocation(int(sz - len + str.sz + 1));
     // TODO: Implement replace() below.
 
     return *this;
-}  // replace()
+}
 
 // ============================================ END TODO #3 ============================================ //
 
@@ -283,17 +277,14 @@ size_t String::find(const String& str, size_t pos) {
     if (pos + str.sz > sz)
         return npos;
     else {
-        // loop through the string
         for (size_t i = pos; i <= sz - str.sz; ++i) {
-            // if str matches a substring of cstr, return the index of the match
             if (strncmp(cstr + i, str.cstr, str.sz) == 0) { 
                 return i; 
-            }  // if
-        }  // for ..i
-        // otherwise, str was not found, so return npos
+            }
+        }
         return npos;
-    }  // if
-}  // find()
+    }
+}
 
 // ============================================== TODO #4 ============================================== //
 
@@ -309,14 +300,14 @@ size_t String::find(const String& str, size_t pos) {
 // HINTS: This is similar to the find() operation, but you will only need ONE character match for
 // a search to succeed (and not the entire String "str") - a double for loop is okay here.
 size_t String::find_first_of(const String& str, size_t pos) {
-    size_t loc = 0;  // Modify this in your implementation
-
     // TODO: Implement find_first_of() below.
-    /* Delete this */ (void)str;
-    /* Delete this */ (void)pos;
 
-    return loc;
-}  // find_first_of()
+    // TODO: Delete the following 3 lines, just here so it compiles after being downloaded
+    (void) str;
+    (void) pos;
+
+    return 0;
+}
 
 // ============================================ END TODO #4 ============================================ //
 
@@ -334,14 +325,13 @@ size_t String::find_first_of(const String& str, size_t pos) {
 // HINTS: This is similar to the find_first_of function. Make sure you consider the case where "pos" 
 // is larger than the size ("sz") of the String.
 size_t String::find_last_of(const String& str, size_t pos) {
-    size_t loc = 0;  // Modify this in your implementation
-
     // TODO: Implement find_last_of() below.
-    /* Delete this */ (void)str;
-    /* Delete this */ (void)pos;
 
-    return loc;
-}  // find_last_of()
+    // TODO: Delete the following 3 lines, just here so it compiles after being downloaded
+    (void) str;
+    (void) pos;
+    return 0;
+}
 
 // ============================================ END TODO #5 ============================================ //
 
