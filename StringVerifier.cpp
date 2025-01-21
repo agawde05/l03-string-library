@@ -1,22 +1,19 @@
 #include "String.h"
 #include <cstring>
-#include <cstdio>
 #include <cstdlib>
 #include <exception>
-
+#include <iostream>
+#include <limits>
 /* 
 *
 *   Lab 3 - String Library Test File
 *   Assignment Identifier: 5AE7C079A8BF493DDDB6EF76D42136D183D8D7A8
 *
-*   Do NOT submit this file to the AG. The test case used here is 
-*   identical to the test cases run on the Autograder. The score you
-*   see at the bottom of your output will be your score on the lab.
+*   The test case used here is identical to the test cases run on
+*   the Autograder. The score you see at the bottom of your output
+*   should be your score on the lab.
 *
 */
-
-#define STRING_BUFFER 32
-#define STDIN_REQUEST "%31s"
 
 // Use these to test individual operations all at once:
 #define TEST_ERASE 72
@@ -60,7 +57,7 @@ int main() {
     printf("  -- ENTER 77 TO RUN ALL TESTS\n");
     fflush(stdout);
     int test_number = 0;
-    if (scanf("%d", &test_number) == EOF) {
+    if (!(std::cin >> test_number)) {
         printf("Failed to read in string - this shouldn't be happening.\n");
         return 1;
     }
@@ -801,7 +798,7 @@ int main() {
             size_t solution[26] = { 36, 10, 7, 40, 2, 16, 42, 1, 6, 20, 8, 35, 22, 14, 12, 23, 4, 11, 24, 0, 5, 27, 13, 18, 38, 37 };
             bool passed = true;
             char* target = new char[2];
-            target[1] = '\0';
+            target[1] = a_null_byte;
             for (int i = 0; i < 26; ++i) {
                 target[0] = static_cast<char>('a' + i);
                 String next_char = target;
@@ -1081,7 +1078,7 @@ int main() {
             size_t solution[26] = { 36, 10, 7, 40, 33, 16, 42, 32, 6, 20, 8, 35, 22, 14, 41, 23, 4, 29, 24, 31, 21, 27, 13, 18, 38, 37 };
             bool passed = true;
             char* target = new char[2];
-            target[1] = '\0';
+            target[1] = a_null_byte;
             for (int i = 0; i < 26; ++i) {
                 target[0] = static_cast<char>('a' + i);
                 String next_char = target;
@@ -1370,17 +1367,17 @@ int main() {
 
             printf(" TOTAL TESTS PASSED: %d/71 (%.2f%%)\n", num_correct, ((float)num_correct / 71) * 100);
             printf("====================================================================================\n");
-            printf(" FINAL SCORE: %.2f/10\n", ((float)num_correct / 71) * 10);
+            printf(" FINAL SCORE: %.2f/5.00\n", ((float)num_correct / 71) * 5);
         }
         return 0;
     }
-    catch (const String_exception &s) {
+    catch (const String_exception &) {
         printf("FAILED\n\n YOUR PROGRAM THREW AN EXCEPTION FOR THIS TEST CASE ...\n");
         printf(" TEST FAILED ... MAKE SURE YOU AREN'T ACCESSING BAD MEMORY\n");
         printf(" PROGRAM EXITING WITH ERROR\n");
         return 1;
     }
-    catch (const std::exception &e) {
+    catch (const std::exception &) {
         printf("FAILED\n\n YOUR PROGRAM THREW AN EXCEPTION FOR THIS TEST CASE ...\n");
         printf(" TEST FAILED ... MAKE SURE YOU AREN'T ACCESSING BAD MEMORY\n");
         printf(" PROGRAM EXITING WITH ERROR\n");

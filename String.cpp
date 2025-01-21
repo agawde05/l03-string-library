@@ -305,7 +305,6 @@ size_t String::find_first_of(const String& str, size_t pos) {
     // TODO: Delete the following 3 lines, just here so it compiles after being downloaded
     (void) str;
     (void) pos;
-
     return 0;
 }
 
@@ -349,31 +348,19 @@ String& String::operator+=(char rhs) {
 // The operator+= for C-strings appends the C-string "rhs" to a String and
 // returns a reference to the modified String.
 String& String::operator+=(const char* rhs) {
-    if (rhs && *rhs != a_null_byte) {
-        char* temp = allocate_string(rhs, 0, sz + 1);
-        bool self_assignment = false;
-        if (cstr == rhs) self_assignment = true;
-        check_allocation(int(sz + 1 + strlen(rhs)));
-        if (self_assignment) {
-            auto old_size = sz;
-            for (size_t i = 0; i < old_size; ++i) {
-                operator+=(*(temp + i));
-            }
-        }
-        else {
-            while (*rhs) {
-                operator+=(*rhs++);
-            }
-        }
-        delete[] temp;
-    }
+    String other{ rhs };
+    operator+=(other);
     return *this;
 }
 
 // The operator+= for String Objects - used to append another String object
 String& String::operator+=(const String& rhs) {
     if (rhs.size() > 0) {
-        operator+=(rhs.c_str());
+        check_allocation(static_cast<int>(sz + rhs.sz + 1));
+        // Walk backwards, which makes self-append safer
+        for (char *dest = cstr + sz + rhs.sz, *source = rhs.cstr + rhs.sz; dest >= cstr + sz; --dest, --source)
+            *dest = *source;
+        sz += rhs.sz;
     }
     return *this;
 }
@@ -390,12 +377,14 @@ void String::grow_allocation(int amount) {
     total_allocation += (2 * amount) - allocation;
     allocation = 2 * amount;
     char* doubled_alloc = new char[static_cast<size_t>(allocation)];
-    strcpy(doubled_alloc, cstr);
+    char *dest = doubled_alloc;
+    for (char *source = cstr; *source != a_null_byte; ++dest, ++source)
+        *dest = *source;
+    *dest = a_null_byte;
     if (cstr && *cstr != a_null_byte) {
         delete[] cstr;
-        cstr = nullptr;
     }
-    std::swap(doubled_alloc, cstr);
+    cstr = doubled_alloc;
 }
 
 // Allocates a C-string, constructed on the range from begin to end of C-string str.
