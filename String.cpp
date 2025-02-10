@@ -192,7 +192,7 @@ void String::clear() {
 // ============================================== TODO #1
 // ============================================== //
 
-// TODO #1: Implement erase() for String Objects
+// #1: Implement erase() for String Objects
 // When erase() is called using two parameters, "pos" and "len", this function
 // erases the portion of the String object that begins at index "pos" that spans
 // "len" characters (or until the end of the String, whichever comes first). If
@@ -214,11 +214,18 @@ String &String::erase(size_t pos, size_t len) {
     throw String_exception("Erase bounds invalid");
   }
 
-  // TODO: Delete the following line, just here so it compiles after being
-  // downloaded
-  (void)len;
+  // adjust if too far
+  if (len == npos || pos + len > sz) {
+    len = sz - pos;
+  }
 
-  // TODO: Implement erase() below.
+  // shift back
+  for (size_t i = pos; i + len < sz; ++i) {
+    cstr[i] = cstr[i + len];
+  }
+
+  sz -= len;
+  cstr[sz] = a_null_byte;
 
   return *this;
 }
@@ -229,7 +236,7 @@ String &String::erase(size_t pos, size_t len) {
 // ============================================== TODO #2
 // ============================================== //
 
-// TODO #2: Implement insert() for String Objects
+// #2: Implement insert() for String Objects
 // When insert() is called using two parameters, "pos" and "str", this function
 // inserts the contents of "str" BEFORE the character indicated by "pos".
 //
@@ -248,7 +255,25 @@ String &String::insert(size_t pos, const String &str) {
   // Make sure there is enough space to store the new string - don't worry about
   // this.
   check_allocation(int(sz + str.sz + 1));
-  // TODO: Implement insert() below.
+
+  String temp_str = str;
+  size_t insert_size = temp_str.sz;
+
+  // make space
+  for (size_t i = sz; i >= pos; --i) {
+    cstr[i + insert_size] = cstr[i];
+    if (i == 0) {
+      break;
+    }
+  }
+
+  // copy
+  for (size_t i = 0; i < insert_size; ++i) {
+    cstr[pos + i] = temp_str.cstr[i];
+  }
+
+  sz += insert_size;
+  cstr[sz] = a_null_byte;
 
   return *this;
 }
@@ -259,7 +284,7 @@ String &String::insert(size_t pos, const String &str) {
 // ============================================== TODO #3
 // ============================================== //
 
-// TODO #3: Implement replace() for String Objects
+// #3: Implement replace() for String Objects
 // When replace() is called using three parameters, "pos", "len", and "str",
 // this function replaces the portion of the String that begins at character
 // "pos" and spans "len" characters with the contents of the String object
@@ -282,7 +307,12 @@ String &String::replace(size_t pos, size_t len, const String &str) {
     len = sz - pos;
   if (len < str.sz)
     check_allocation(int(sz - len + str.sz + 1));
-  // TODO: Implement replace() below.
+
+  String temp_str = str;
+
+  // TODO: this should be right once insert is fixed
+  erase(pos, len);
+  insert(pos, temp_str);
 
   return *this;
 }
@@ -317,7 +347,7 @@ size_t String::find(const String &str, size_t pos) {
 // ============================================== TODO #4
 // ============================================== //
 
-// TODO #4: Implement find_first_of() for String Objects
+// #4: Implement find_first_of() for String Objects
 // When find_first_of() is called using two parameters, "str" and "pos", this
 // function searches the String for the first character that matches ANY of the
 // characters in "str", starting at position "pos" of the String. Characters
@@ -332,13 +362,19 @@ size_t String::find(const String &str, size_t pos) {
 // character match for a search to succeed (and not the entire String "str") - a
 // double for loop is okay here.
 size_t String::find_first_of(const String &str, size_t pos) {
-  // TODO: Implement find_first_of() below.
+  if (pos >= sz) {
+    return npos;
+  }
 
-  // TODO: Delete the following 3 lines, just here so it compiles after being
-  // downloaded
-  (void)str;
-  (void)pos;
-  return 0;
+  for (size_t i = pos; i < sz; ++i) {
+    for (size_t j = 0; j < str.sz; ++j) {
+      if (cstr[i] == str.cstr[j]) {
+        return i;
+      }
+    }
+  }
+
+  return npos;
 }
 
 // ============================================ END TODO #4
@@ -347,7 +383,7 @@ size_t String::find_first_of(const String &str, size_t pos) {
 // ============================================== TODO #5
 // ============================================== //
 
-// TODO #5: Implement find_last_of() for String Objects
+// #5: Implement find_last_of() for String Objects
 // When find_last_of() is called using two parameters, "str" and "pos", this
 // function searches the String for the last character that matches ANY of the
 // characters in "str", starting at position "pos" of the String (and moving
@@ -360,13 +396,22 @@ size_t String::find_first_of(const String &str, size_t pos) {
 // HINTS: This is similar to the find_first_of function. Make sure you consider
 // the case where "pos" is larger than the size ("sz") of the String.
 size_t String::find_last_of(const String &str, size_t pos) {
-  // TODO: Implement find_last_of() below.
+  if (pos >= sz)
+    pos = sz - 1;
 
-  // TODO: Delete the following 3 lines, just here so it compiles after being
-  // downloaded
-  (void)str;
-  (void)pos;
-  return 0;
+  for (size_t i = pos; i != npos; --i) {
+    for (size_t j = 0; j < str.sz; ++j) {
+      if (cstr[i] == str.cstr[j]) {
+        return i;
+      }
+    }
+    // avoid npos loop
+    if (i == 0) {
+      break;
+    }
+  }
+
+  return npos;
 }
 
 // ============================================ END TODO #5
